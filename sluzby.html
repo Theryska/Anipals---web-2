@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Služby — AniPals</title>
+<meta name="description" content="Pět způsobů, jak se u AniPals postaráme o vaše zvíře — od nonstop péče u vás doma po jednorázové venčení. Vyberte podle toho, kde péče probíhá a jestli hlídač zůstává přes noc.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400..700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<svg id="leash" aria-hidden="true"></svg>
+
+<div class="page">
+
+<header class="hdr">
+  <div class="hdr-in">
+    <a class="brand" href="index.html" aria-label="AniPals — domů">
+      <img src="assets/logo.png" alt="AniPals">
+    </a>
+
+    <nav class="menu" id="menu">
+      <a href="index.html">Domů</a>
+
+      <span class="has-sub">
+        <a href="jak-to-funguje.html">Jak to funguje</a>
+        <button class="sub-toggle" aria-expanded="false" aria-controls="submenu-jak" aria-label="Zobrazit sekce stránky Jak to funguje">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg>
+        </button>
+        <span class="submenu" id="submenu-jak">
+          <a href="jak-to-funguje.html#prehled">Přehled</a>
+          <a href="jak-to-funguje.html#postup">Celý postup</a>
+          <a href="jak-to-funguje.html#otazky">Otázky před objednáním</a>
+        </span>
+      </span>
+
+      <span class="has-sub">
+        <a href="sluzby.html" aria-current="page">Služby</a>
+        <button class="sub-toggle" aria-expanded="false" aria-controls="submenu-sluzby" aria-label="Zobrazit sekce stránky Služby">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg>
+        </button>
+        <span class="submenu" id="submenu-sluzby">
+          <a href="sluzby.html#sluzby">Přehled</a>
+          <a href="sluzby.html#jak-vybrat">Jak vybrat</a>
+          <a href="sluzby.html#zachranna-sit">Záchranná síť</a>
+        </span>
+      </span>
+
+      <span class="has-sub">
+        <a href="cenik.html">Ceník</a>
+        <button class="sub-toggle" aria-expanded="false" aria-controls="submenu-cenik" aria-label="Zobrazit sekce stránky Ceník">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg>
+        </button>
+        <span class="submenu" id="submenu-cenik">
+          <a href="cenik.html#z-ceho-se-cena-sklada">Z čeho se cena skládá</a>
+          <a href="cenik.html#jak-zaplatit">Jak zaplatit</a>
+          <a href="cenik.html#slevy">Slevy</a>
+          <a href="cenik.html#storno">Storno podmínky</a>
+        </span>
+      </span>
+
+      <a href="#kontakt">Kontakt</a>
+      <a href="prihlaseni.html" class="menu-login">Přihlásit se</a>
+    </nav>
+
+    <div class="hdr-right">
+      <div class="lang" role="group" aria-label="Volba jazyka">
+        <button type="button" aria-current="true">CZ</button>
+        <span class="bar" aria-hidden="true">/</span>
+        <button type="button">EN</button>
+      </div>
+      <a href="index.html#stahnout" class="btn is-solid is-mini">Stáhnout aplikaci</a>
+    </div>
+
+    <button class="burger" id="burger" aria-label="Otevřít menu" aria-expanded="false" aria-controls="menu">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#14372A" stroke-width="2.2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero" data-stop>
+    <div class="wrap hero-lead">
+      <p class="eyebrow">Služby</p>
+      <h1>Pět způsobů,<br>jak se staráme</h1>
+      <p class="lede">
+        Liší se místem, délkou a tím, kdo se komu přizpůsobí. Vyberte si podle toho,
+        co bude pro vaše zvíře nejmenší změna — o zbytek se postaráme my.
+      </p>
+      <div class="cta-row">
+        <a class="btn is-solid" href="#sluzby">Prohlédnout služby</a>
+        <a class="btn is-line" href="#jak-vybrat">Porovnat služby</a>
+      </div>
+      <dl class="hero-facts">
+        <div class="fact"><dt>Zvířata</dt><dd>psi, kočky, králíci, hlodavci, ptáci, terarijní zvířata, rybičky</dd></div>
+        <div class="fact"><dt>Hlídači</dt><dd>ověřená totožnost, pojištění, osobní seznámení předem</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="sec on-sage" id="sluzby" data-stop>
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Přehled</p>
+        <h2>Co si můžete objednat</h2>
+        <p class="sub">
+          U každé služby píšeme, kde péče probíhá a jestli hlídač zůstává přes noc.
+          To jsou dvě věci, které rozhodují nejčastěji.
+        </p>
+      </div>
+
+      <div class="svcs-detail">
+
+        <article class="svc-detail">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.4 9.6V20h13.2V9.6"/><path d="M12 20v-4.2"/><path d="M9.6 15.8h4.8"/><path d="M15.8 5.6V3.4h2.6v4.4"/></svg>
+          <div>
+            <h3>24/7 Domácí péče</h3>
+            <span class="tick">Nonstop · u vás doma · s přespáním</span>
+            <p>
+              Hlídač se k vám na dobu vaší nepřítomnosti dočasně nastěhuje. Zvíře zůstává ve
+              svém prostředí, ve svém rytmu a mezi svými pachy, nemusí si tedy zvykat na nic
+              nového. Zároveň váš dům není celou dobu prázdný: hlídač může zalít květiny,
+              vybrat poštu – to vše závisí na dohodě s vámi.
+            </p>
+            <p class="pro"><strong>Vhodné pro</strong> zvířata, která špatně snáší změnu prostředí, domácnosti s více zvířaty a starší nebo nemocná zvířata.</p>
+          </div>
+        </article>
+
+        <article class="svc-detail">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11 12 3.6 21 11"/><path d="M5.4 10.2V20h13.2v-9.8"/><path d="M8 17.4h8"/><path d="M8 17.4v-2.6a1.6 1.6 0 0 1 1.6-1.6h4.8a1.6 1.6 0 0 1 1.6 1.6v2.6"/><path d="M8 17.4V19"/><path d="M16 17.4V19"/></svg>
+          <div>
+            <h3>24/7 Hotelová péče</h3>
+            <span class="tick">Nonstop · u hlídače · s přespáním</span>
+            <p>
+              Zvíře bydlí po celou dobu u hlídače doma. Jedná se o domácnost s běžným denním
+              režimem – hlídač nemá žádné kotce ani boxy, tudíž zvíře nebude zavíráno, pokud
+              sami neurčíte jinak. V profilu hlídače najdete i další informace o prostoru
+              a o tom, jaká další zvířata tam žijí.
+            </p>
+            <p class="pro"><strong>Vhodné pro</strong> společenská zvířata, která si rychle zvyknou, a pro kratší pobyty, kdy vám nevyhovuje pouštět někoho do bytu.</p>
+          </div>
+        </article>
+
+        <article class="svc-detail">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.6"/><path d="M12 3.2v2.2"/><path d="M12 18.6v2.2"/><path d="M4.8 12H2.6"/><path d="M21.4 12h-2.2"/><path d="m6.9 6.9-1.6-1.6"/><path d="m18.7 18.7-1.6-1.6"/><path d="m6.9 17.1-1.6 1.6"/><path d="m18.7 5.3-1.6 1.6"/></svg>
+          <div>
+            <h3>Denní hlídání u vás doma</h3>
+            <span class="tick">Přes den · u vás doma · bez přespání</span>
+            <p>
+              Hlídač je u vás doma jen během dne — nakrmí, vyvenčí, pohraje si a uklidí po sobě.
+              Večer odchází, noc má zvíře samo. Vhodné, když jste na dlouhé směně nebo služební
+              cestě přes den.
+            </p>
+            <p class="pro"><strong>Vhodné pro</strong> zvířata, která zvládnou noc o samotě, ale přes den potřebují společnost, krmení nebo léky.</p>
+          </div>
+        </article>
+
+        <article class="svc-detail">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.4 8.4h11.2a1.6 1.6 0 0 1 1.6 1.6v8a1.6 1.6 0 0 1-1.6 1.6H6.4a1.6 1.6 0 0 1-1.6-1.6v-8a1.6 1.6 0 0 1 1.6-1.6Z"/><path d="M9 8.4V6.2a3 3 0 0 1 6 0v2.2"/><path d="M4.8 13.4h14.4"/></svg>
+          <div>
+            <h3>Denní hlídání u hlídače</h3>
+            <span class="tick">Přes den · u hlídače · bez přespání</span>
+            <p>
+              Zvířecí školička. Ráno zvíře předáte, odpoledne či k večeru si ho vyzvednete. Mezitím má
+              společnost, pohyb a pravidelný program. Předání i vyzvednutí si domluvíte
+              přesně na čas, který vám sedí.
+            </p>
+            <p class="pro"><strong>Vhodné pro</strong> psy, kteří neradi zůstávají sami, a pro pravidelné hlídání během pracovního týdne.</p>
+          </div>
+        </article>
+
+        <article class="svc-detail is-wide">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.4"/><path d="M12 7.2V12l3.2 1.9"/></svg>
+          <div>
+            <h3>Jednorázové návštěvy a venčení</h3>
+            <span class="tick">30–60 minut · u vás doma · bez přespání</span>
+            <p>
+              Krátká návštěva u vás doma na konkrétní úkol: nakrmit kočky, králíky, rybičky
+              nebo terarijní zvířata, vyčistit toaletu a doplnit vodu, nebo vzít psa na
+              procházku. Objednat můžete jednu návštěvu i několik denně po celou dobu, kdy
+              jste pryč. Po každé návštěvě vám přijde krátká zpráva s fotkou.
+            </p>
+            <p class="pro"><strong>Vhodné pro</strong> samostatná zvířata, krátké odjezdy a dny, kdy se prostě nestíháte včas vrátit domů.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="jak-vybrat" data-stop>
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Jak vybrat</p>
+        <h2>Vedle sebe</h2>
+        <p class="sub">
+          Pokud si nejste jistí, ptejte se na jedinou věc: co bude pro vaše zvíře menší změna —
+          cizí člověk doma, nebo cizí domov?
+        </p>
+      </div>
+
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Služba</th>
+              <th scope="col">Kde</th>
+              <th scope="col">Přespání</th>
+              <th scope="col">Typicky</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">24/7 Domácí péče</th><td>u vás doma</td><td>ano</td><td>dovolená, delší odjezd</td></tr>
+            <tr><th scope="row">24/7 Hotelová péče</th><td>u hlídače</td><td>ano</td><td>víkend, kratší pobyt</td></tr>
+            <tr><th scope="row">Denní hlídání u vás</th><td>u vás doma</td><td>ne</td><td>dlouhá směna, práce z kanceláře</td></tr>
+            <tr><th scope="row">Denní hlídání u hlídače</th><td>u hlídače</td><td>ne</td><td>pravidelný pracovní týden</td></tr>
+            <tr><th scope="row">Návštěvy a venčení</th><td>u vás doma</td><td>ne</td><td>krmení, venčení, jeden den pryč</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6.5v5c0 4.4 3.2 8.2 8 9.5 4.8-1.3 8-5.1 8-9.5v-5L12 3Z"/><path d="m9 12 2 2 4-4"/></svg>
+        <div>
+          <h3>Plnou moc k veterináři řešíme u všech služeb</h3>
+          <p>
+            Před začátkem hlídání podepíšete hlídači plnou moc k ošetření zvířete. Když se něco
+            stane, veterinář ho ošetří okamžitě a nečeká, až se dovolá vám.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="close" id="zachranna-sit" data-stop>
+    <div class="wrap">
+      <p class="eyebrow">Záchranná síť</p>
+      <h2>Nikdy nezůstanete bez hlídače</h2>
+      <p>
+        Když hlídač na poslední chvíli vypadne z vážného důvodu, obvoláváme za vás ostatní
+        hlídače ve vašem okolí. Vy nemusíte dělat nic a nic navíc neplatíte.
+      </p>
+      <div class="cta-row">
+        <a class="btn is-solid" href="#sluzby">Najít hlídače</a>
+        <a class="btn is-line" href="registrace-hlidac.html">Chci hlídat</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="ftr" id="kontakt">
+  <div class="wrap">
+    <div class="ftr-grid">
+      <div>
+        <div class="ftr-brand">AniPals</div>
+        <p style="margin-top:8px;">Parťáci pro vaše mazlíčky. Ověření hlídači po celé České republice.</p>
+      </div>
+      <div>
+        <h4>Platforma</h4>
+        <ul>
+          <li><a href="jak-to-funguje.html">Jak to funguje</a></li>
+          <li><a href="sluzby.html">Služby</a></li>
+          <li><a href="cenik.html">Ceník</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Pro hlídače</h4>
+        <ul>
+          <li><a href="registrace-hlidac.html">Staňte se hlídačem</a></li>
+          <li><a href="index.html#bezpeci">Bezpečnost a pojištění</a></li>
+          <li><a href="jak-to-funguje.html#otazky">Časté dotazy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="mailto:info@anipals.cz">info@anipals.cz</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ftr-btm">
+      <span>© 2026 AniPals — parťáci pro vaše mazlíčky.</span>
+      <span><a href="podminky.html">Obchodní podmínky</a> · <a href="soukromi.html">Ochrana osobních údajů</a> · <a href="cookies.html">Cookies</a></span>
+    </div>
+  </div>
+</footer>
+
+</div><!-- /.page -->
+
+<script src="js/script.js"></script>
+</body>
+</html>

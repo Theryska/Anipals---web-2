@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jak to funguje — AniPals</title>
+<meta name="description" content="Sedm kroků od prověření hlídače po recenzi. Rezervace, seznámení, předání mazlíčka a klíčů, zprávy z hlídání a vyúčtování.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400..700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<svg id="leash" aria-hidden="true"></svg>
+
+<div class="page">
+
+<header class="hdr">
+  <div class="hdr-in">
+    <a class="brand" href="index.html" aria-label="AniPals — domů">
+      <img src="assets/logo.png" alt="AniPals">
+    </a>
+
+    <nav class="menu" id="menu">
+      <a href="index.html">Domů</a>
+
+      <span class="has-sub">
+        <a href="jak-to-funguje.html" aria-current="page">Jak to funguje</a>
+        <button class="sub-toggle" aria-expanded="false" aria-controls="submenu-jak" aria-label="Zobrazit sekce stránky Jak to funguje">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg>
+        </button>
+        <span class="submenu" id="submenu-jak">
+          <a href="jak-to-funguje.html#prehled" data-tab="tab-majitel">Pro majitele</a>
+          <a href="jak-to-funguje.html#prehled" data-tab="tab-hlidac">Pro hlídače</a>
+          <a href="jak-to-funguje.html#postup">Celý postup</a>
+          <a href="jak-to-funguje.html#otazky">Otázky před objednáním</a>
+        </span>
+      </span>
+
+      <span class="has-sub">
+        <a href="sluzby.html">Služby</a>
+        <button class="sub-toggle" aria-expanded="false" aria-controls="submenu-sluzby" aria-label="Zobrazit sekce stránky Služby">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg>
+        </button>
+        <span class="submenu" id="submenu-sluzby">
+          <a href="sluzby.html#sluzby">Přehled</a>
+          <a href="sluzby.html#jak-vybrat">Jak vybrat</a>
+          <a href="sluzby.html#zachranna-sit">Záchranná síť</a>
+        </span>
+      </span>
+
+      <span class="has-sub">
+        <a href="cenik.html">Ceník</a>
+        <button class="sub-toggle" aria-expanded="false" aria-controls="submenu-cenik" aria-label="Zobrazit sekce stránky Ceník">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg>
+        </button>
+        <span class="submenu" id="submenu-cenik">
+          <a href="cenik.html#z-ceho-se-cena-sklada">Z čeho se cena skládá</a>
+          <a href="cenik.html#jak-zaplatit">Jak zaplatit</a>
+          <a href="cenik.html#slevy">Slevy</a>
+          <a href="cenik.html#storno">Storno podmínky</a>
+        </span>
+      </span>
+
+      <a href="#kontakt">Kontakt</a>
+      <a href="prihlaseni.html" class="menu-login">Přihlásit se</a>
+    </nav>
+
+    <div class="hdr-right">
+      <div class="lang" role="group" aria-label="Volba jazyka">
+        <button type="button" aria-current="true">CZ</button>
+        <span class="bar" aria-hidden="true">/</span>
+        <button type="button">EN</button>
+      </div>
+      <a href="index.html#stahnout" class="btn is-solid is-mini">Stáhnout aplikaci</a>
+    </div>
+
+    <button class="burger" id="burger" aria-label="Otevřít menu" aria-expanded="false" aria-controls="menu">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#14372A" stroke-width="2.2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero" data-stop>
+    <div class="wrap hero-lead">
+      <p class="eyebrow">Jak to funguje</p>
+      <h1>Sedm kroků od prověření hlídače k <em>první fotce</em> z procházky.</h1>
+      <p class="lede">Každý hlídač projde kontrolou dokladů. Peníze zůstávají blokované do konce hlídání. Majitel zatím dostává fotky a zprávy o mazlíčkovi.</p>
+      <div class="cta-row">
+        <a href="sluzby.html" class="btn is-solid">Najít hlídače</a>
+        <a href="#krok-1" class="btn is-line">Chci se stát hlídačem</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec on-sage" id="prehled" data-stop>
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Přehled</p>
+        <h2>Vyberte si, odkud se na to díváte</h2>
+        <p class="sub">Postup je stejný, ale každá strana v něm dělá něco jiného. Přepněte si pohled.</p>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="Pohled na postup">
+        <button class="tab" id="tab-majitel" role="tab" aria-selected="true" aria-controls="panel-majitel">Pro majitele</button>
+        <button class="tab" id="tab-hlidac" role="tab" aria-selected="false" aria-controls="panel-hlidac" tabindex="-1">Pro hlídače</button>
+      </div>
+
+      <div id="panel-majitel" role="tabpanel" aria-labelledby="tab-majitel">
+        <ol class="journey">
+          <li><span class="num">01</span><div><h3>Najdete hlídače</h3><p>Zadáte adresu, termín a druh zvířete. Vybíráte podle ceny, recenzí a vzdálenosti. <a href="#krok-2">Detail kroku</a></p></div></li>
+          <li><span class="num">02</span><div><h3>Domluvíte podmínky</h3><p>Zvolíte čas a způsob předání mazlíčka, popřípadě klíčů a nastavíte limit plné moci k veterináři. <a href="#krok-2">Detail kroku</a></p></div></li>
+          <li><span class="num">03</span><div><h3>Seznámíte se a zaplatíte</h3><p>Krátká schůzka osobně nebo přes video. Po potvrzení se peníze zablokují, hlídač k nim zatím nemá přístup. <a href="#krok-3">Detail kroku</a></p></div></li>
+          <li><span class="num">04</span><div><h3>Předáte mazlíčka nebo klíče (pokud jde o hlídání u vás doma)</h3><p>Mazlíčka předáte dle domluvy s hlídačem, klíče necháte buď v lockboxu (uzamykatelná schránka před domovem) a pošlete kód chatem, nebo je předáte osobně i se zvířetem. <a href="#krok-4">Detail kroku</a></p></div></li>
+          <li><span class="num">05</span><div><h3>Sledujete průběh</h3><p>Dostáváte fotky, videa a zprávy o mazlíčkovi v tempu, na kterém jste se s hlídačem domluvili. <a href="#krok-5">Detail kroku</a></p></div></li>
+          <li><span class="num">06</span><div><h3>Přebíráte zvíře</h3><p>Mazlíček či klíče se vrátí, aplikace sama strhne případný doplatek. Nic nepřevádíte ručně. <a href="#krok-6">Detail kroku</a></p></div></li>
+          <li><span class="num">07</span><div><h3>Napíšete recenzi</h3><p>Hodnocení hvězdičkami a pár vět, které pomůžou dalším majitelům při výběru. <a href="#krok-7">Detail kroku</a></p></div></li>
+        </ol>
+      </div>
+
+      <div id="panel-hlidac" role="tabpanel" aria-labelledby="tab-hlidac" hidden>
+        <ol class="journey">
+          <li><span class="num">01</span><div><h3>Založíte si profil</h3><p>Nahrajete občanský průkaz, výpis z rejstříku trestů a popíšete své zkušenosti se zvířaty. <a href="#krok-1">Detail kroku</a></p></div></li>
+          <li><span class="num">02</span><div><h3>Projdete prověřením</h3><p>Profil zkontroluje a schválí tým AniPals. Pak si nastavíte vlastní ceník a kalendář dostupnosti. <a href="#krok-1">Detail kroku</a></p></div></li>
+          <li><span class="num">03</span><div><h3>Přijmete objednávku</h3><p>Vidíte adresu, termín i druh zvířete. U delších hlídání proběhne seznamovací schůzka. <a href="#krok-3">Detail kroku</a></p></div></li>
+          <li><span class="num">04</span><div><h3>Převezmete mazlíčka nebo klíče (pokud jde o hlídání u majitele doma)</h3><p>Kód k lockboxu dostanete zabezpečeným chatem, nebo si klíče vyzvednete osobně. <a href="#krok-4">Detail kroku</a></p></div></li>
+          <li><span class="num">05</span><div><h3>Pečujete a hlásíte se</h3><p>Odkliknete zahájení a pokud jste u majitele doma, vyplníte předávací protokol. Po dobu hlídání posíláte domluvené zprávy a fotografie. <a href="#krok-5">Detail kroku</a></p></div></li>
+          <li><span class="num">06</span><div><h3>Ukončíte hlídání</h3><p>Předáte mazlíčka, popřípadě klíče a zakázku označíte jako Dokončeno. <a href="#krok-6">Detail kroku</a></p></div></li>
+          <li><span class="num">07</span><div><h3>Dostanete zaplaceno</h3><p>Platforma uvolní peníze na váš bankovní účet. Recenze se propíše na váš veřejný profil. <a href="#krok-7">Detail kroku</a></p></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="postup" data-stop>
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Krok za krokem</p>
+        <h2>Celý postup</h2>
+        <p class="sub">Od založení profilu hlídače až po recenzi, kterou uvidí další majitelé.</p>
+      </div>
+
+      <article class="pstep reveal" id="krok-1">
+        <span class="num">01</span>
+        <div>
+          <div class="pstep-head">
+            <h3>Registrace a prověření</h3>
+            <span class="tag">Pro hlídače</span>
+          </div>
+          <p>Zájemce o hlídání si založí profil a doloží, kdo je. Každý profil kontroluje tým AniPals ručně — dokud není schválený, v nabídce se neobjeví.</p>
+          <ul class="checklist">
+            <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="8.5" cy="11" r="2"/><path d="M5 16.5c.6-1.6 2-2.4 3.5-2.4s2.9.8 3.5 2.4M15 10h4M15 13.5h4"/></svg> Občanský průkaz a výpis z rejstříku trestů</li>
+            <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h10a1.5 1.5 0 0 1 1.5 1.5v15.5h-13V5A1.5 1.5 0 0 1 7 3.5z"/><path d="M9 9.5h6M9 13h6M9 16.5h3.5"/></svg> Popis dosavadních zkušeností se zvířaty</li>
+            <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="1.5"/><path d="M8 3v4M16 3v4M3.5 10h17"/></svg> Po schválení si nastaví vlastní ceník a kalendář dostupnosti</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="pstep reveal" id="krok-2">
+        <span class="num">02</span>
+        <div>
+          <div class="pstep-head">
+            <h3>Vyhledání a rezervace</h3>
+            <span class="tag">Pro majitele</span>
+          </div>
+          <p>Na webu nebo v aplikaci zadáte adresu, termín a druh zvířete. Hlídače si vyberete podle <strong>ceny, recenzí a vzdálenosti</strong>.</p>
+          <p>Rovnou v rezervaci zvolíte, zda-li předáte klíče přes lockbox nebo osobně (pokud jde o hlídání u majitele).</p>
+          <div class="callout"><div><strong>Plná moc k veterináři.</strong> Součástí objednávky je digitální souhlas s ošetřením. Nastavíte si limit, typicky do 3 000 Kč, do kterého může hlídač v akutním případě jednat bez čekání na vaši odpověď.</div></div>
+        </div>
+      </article>
+
+      <article class="pstep reveal" id="krok-3">
+        <span class="num">03</span>
+        <div>
+          <div class="pstep-head">
+            <h3>Seznámení a platba</h3>
+            <span class="tag">Obě strany</span>
+          </div>
+          <p>U delších hlídání a vždy před první návštěvou proběhne krátká seznamovací schůzka, buď osobně u vás doma, nebo přes videohovor.</p>
+          <p>Jakmile objednávku potvrdíte, platební brána prostředky <strong>zablokuje</strong>: buď celou částku, nebo prvních 50 %. Hlídač k penězům do konce hlídání nemá přístup.</p>
+        </div>
+      </article>
+
+      <article class="pstep reveal" id="krok-4">
+        <span class="num">04</span>
+        <div>
+          <div class="pstep-head">
+            <h3>Předání mazlíčka a/nebo klíčů</h3>
+            <span class="tag">Obě strany</span>
+          </div>
+          <p>Místo a čas jsou vždy na domluvě mezi majitelem a hlídačem. Klíče můžete předat následujícími způsoby:</p>
+          <div class="pair">
+            <div>
+              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="10" rx="1.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v2"/></svg>
+              <h4>Lockbox</h4>
+              <p>Klíče necháte v uzamykatelné schránce na klice nebo plotě. Kód pošlete hlídači zabezpečeným chatem v aplikaci.</p>
+            </div>
+            <div>
+              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="12" r="3.2"/><path d="M12.2 12H20M17 9.5V12M20 9.5V12"/></svg>
+              <h4>Osobně</h4>
+              <p>Klíče i zvíře si předáte na smluveném místě a čase. Hodí se, když chcete ještě něco ukázat nebo doplnit.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="pstep reveal" id="krok-5">
+        <span class="num">05</span>
+        <div>
+          <div class="pstep-head">
+            <h3>Průběh péče</h3>
+            <span class="tag">Digitální protokol</span>
+          </div>
+          <p>Zahájení hlídání odklikne v aplikaci <strong>majitel, nebo hlídač</strong> — podle toho, komu se to v danou chvíli hodí.</p>
+          <p>Předávací protokol se vyplňuje jen tehdy, když hlídač přichází <strong>k majiteli domů</strong>. Vyfotí byt i zvíře a potvrdí, že je vše v pořádku.</p>
+          <p>Během hlídání pak posílá fotky, videa a zprávy o mazlíčkovi. <strong>Frekvenci si domluvíte předem</strong> — někomu stačí jedna zpráva denně, jinde je to po každé procházce.</p>
+          <div class="thread">
+            <div class="thread-top">Zprávy z hlídání · den 2</div>
+            <div class="bubble">Ranní procházka hotová, snědl všechno do posledního sousta. Posílám fotku z parku.<time>8:41</time></div>
+            <div class="bubble">Díky moc, vypadá spokojeně.<time>8:44</time></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="pstep reveal" id="krok-6">
+        <span class="num">06</span>
+        <div>
+          <div class="pstep-head">
+            <h3>Ukončení a zúčtování</h3>
+            <span class="tag">Obě strany</span>
+          </div>
+          <p>Služba končí předáním zvířete a popřípadě vrácením klíčů. Hlídač odklikne <strong>Dokončeno</strong>.</p>
+          <p>Aplikace v tu chvíli automaticky strhne případný doplatek zbývajících 50 %. Ručně nikam nic nepřevádíte.</p>
+        </div>
+      </article>
+
+      <article class="pstep reveal" id="krok-7">
+        <span class="num">07</span>
+        <div>
+          <div class="pstep-head">
+            <h3>Výplata a recenze</h3>
+            <span class="tag">Obě strany</span>
+          </div>
+          <p>Platforma uvolní peníze na bankovní účet hlídače. Obě strany pak dostanou výzvu k hodnocení hvězdičkami a krátké recenzi.</p>
+          <p>Recenze se propíše na veřejný profil. Díky tomu si příště vybíráte podle skutečné zkušenosti ostatních majitelů.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="sec on-forest" id="jistoty" data-stop>
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Bezpečí</p>
+        <h2>Co drží celý postup pohromadě</h2>
+        <p class="sub">Tři věci, které v anonymních inzerátech nenajdete.</p>
+      </div>
+      <div class="pillars">
+        <div class="pillar">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7.5 3v6c0 4.3-3 7.8-7.5 9-4.5-1.2-7.5-4.7-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.3 10"/></svg>
+          <h3>Ověřená totožnost</h3><p>Doklad i výpis z rejstříku trestů kontroluje člověk, ne automat. Neschválený profil se v hledání nezobrazí.</p>
+        </div>
+        <div class="pillar">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3 10h18M6.5 14.5h3"/></svg>
+          <h3>Blokovaná platba</h3><p>Peníze drží platební brána až do odkliknutí Dokončeno. Hlídač je dostane po skončení služby, ne dřív.</p>
+        </div>
+        <div class="pillar">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="1.8"/><path d="M8.5 7l1.3-2.5h4.4L15.5 7"/><circle cx="12" cy="13.5" r="3.2"/></svg>
+          <h3>Průběžné zprávy</h3><p>Předávací protokol s fotkami, když hlídač přichází k vám domů, a zprávy o mazlíčkovi v tempu, na kterém jste se domluvili.</p>
+        </div>
+        <div class="pillar">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.8l2.5 5.1 5.6.8-4.1 4 1 5.5-5-2.6-5 2.6 1-5.5-4.1-4 5.6-.8z"/></svg>
+          <h3>Recenze po rezervaci</h3><p>Hodnocení píší jen ti, kdo hlídání skutečně absolvovali. Propíše se oběma stranám na veřejný profil.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="otazky" data-stop>
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Otázky</p>
+        <h2>Než si objednáte</h2>
+      </div>
+      <div class="qa">
+        <details>
+          <summary>Co když hlídání na poslední chvíli zrušíme?</summary>
+          <div class="answer">Blokaci prostředků uvolníme zpět podle stornovacích podmínek uvedených u konkrétního hlídače. Podmínky vidíte v rezervaci ještě před potvrzením objednávky. Obecná pravidla najdete na stránce <a href="cenik.html#storno" style="color:var(--moss); font-weight:500;">Ceník — storno podmínky</a>.</div>
+        </details>
+        <details>
+          <summary>Musí seznamovací schůzka proběhnout osobně?</summary>
+          <div class="answer">Ne. U kratších hlídání stačí videohovor. Osobní setkání doporučujeme u vícedenního hlídání a vždy, když se s hlídačem potkáváte poprvé.</div>
+        </details>
+        <details>
+          <summary>Co se stane, když mazlíček onemocní?</summary>
+          <div class="answer">Hlídač jede k veterináři a zákrok do vašeho limitu uhradí bez čekání na potvrzení. O všem vás okamžitě informuje v chatu. Vyšší částku vždy odsouhlasíte předem.</div>
+        </details>
+        <details>
+          <summary>Jak dlouho trvá schválení profilu hlídače?</summary>
+          <div class="answer">Obvykle dva pracovní dny od nahrání všech dokladů. Když něco chybí, napíšeme vám, co doplnit — profil zatím zůstane rozpracovaný.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="close" data-stop>
+    <div class="wrap">
+      <h2>Odjíždíte a nemáte hlídání?</h2>
+      <p>Zadejte termín a adresu — dostupné hlídače uvidíte během minuty.</p>
+      <a href="sluzby.html" class="btn is-solid">Najít hlídače</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="ftr" id="kontakt">
+  <div class="wrap">
+    <div class="ftr-grid">
+      <div>
+        <div class="ftr-brand">AniPals</div>
+        <p style="margin-top:8px;">Parťáci pro vaše mazlíčky. Ověření hlídači po celé České republice.</p>
+      </div>
+      <div>
+        <h4>Platforma</h4>
+        <ul>
+          <li><a href="jak-to-funguje.html">Jak to funguje</a></li>
+          <li><a href="sluzby.html">Služby</a></li>
+          <li><a href="cenik.html">Ceník</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Pro hlídače</h4>
+        <ul>
+          <li><a href="registrace-hlidac.html">Staňte se hlídačem</a></li>
+          <li><a href="index.html#bezpeci">Bezpečnost a pojištění</a></li>
+          <li><a href="jak-to-funguje.html#otazky">Časté dotazy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="mailto:info@anipals.cz">info@anipals.cz</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ftr-btm">
+      <span>© 2026 AniPals — parťáci pro vaše mazlíčky.</span>
+      <span><a href="podminky.html">Obchodní podmínky</a> · <a href="soukromi.html">Ochrana osobních údajů</a> · <a href="cookies.html">Cookies</a></span>
+    </div>
+  </div>
+</footer>
+
+</div><!-- /.page -->
+
+<script src="js/script.js"></script>
+</body>
+</html>

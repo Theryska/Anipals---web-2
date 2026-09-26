@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ceník — AniPals</title>
+<meta name="description" content="Jak u AniPals vzniká cena hlídání, jaké jsou způsoby platby, slevy a storno podmínky pro majitele i hlídače.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400..700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<svg id="leash" aria-hidden="true"></svg>
+
+<div class="page">
+
+<header class="hdr">
+  <div class="hdr-in">
+    <a class="brand" href="index.html" aria-label="AniPals — domů">
+      <img src="assets/logo.png" alt="AniPals">
+    </a>
+
+    <nav class="menu" id="menu">
+      <a href="index.html">Domů</a>
+
+      <span class="has-sub">
+        <a href="jak-to-funguje.html">Jak to funguje</a>
+        <button class="sub-toggle" aria-expanded="false" aria-controls="submenu-jak" aria-label="Zobrazit sekce stránky Jak to funguje">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg>
+        </button>
+        <span class="submenu" id="submenu-jak">
+          <a href="jak-to-funguje.html#prehled">Přehled</a>
+          <a href="jak-to-funguje.html#postup">Celý postup</a>
+          <a href="jak-to-funguje.html#otazky">Otázky před objednáním</a>
+        </span>
+      </span>
+
+      <span class="has-sub">
+        <a href="sluzby.html">Služby</a>
+        <button class="sub-toggle" aria-expanded="false" aria-controls="submenu-sluzby" aria-label="Zobrazit sekce stránky Služby">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg>
+        </button>
+        <span class="submenu" id="submenu-sluzby">
+          <a href="sluzby.html#sluzby">Přehled</a>
+          <a href="sluzby.html#jak-vybrat">Jak vybrat</a>
+          <a href="sluzby.html#zachranna-sit">Záchranná síť</a>
+        </span>
+      </span>
+
+      <span class="has-sub">
+        <a href="cenik.html" aria-current="page">Ceník</a>
+        <button class="sub-toggle" aria-expanded="false" aria-controls="submenu-cenik" aria-label="Zobrazit sekce stránky Ceník">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg>
+        </button>
+        <span class="submenu" id="submenu-cenik">
+          <a href="cenik.html#z-ceho-se-cena-sklada">Z čeho se cena skládá</a>
+          <a href="cenik.html#jak-zaplatit">Jak zaplatit</a>
+          <a href="cenik.html#slevy">Slevy</a>
+          <a href="cenik.html#storno">Storno podmínky</a>
+        </span>
+      </span>
+
+      <a href="#kontakt">Kontakt</a>
+      <a href="prihlaseni.html" class="menu-login">Přihlásit se</a>
+    </nav>
+
+    <div class="hdr-right">
+      <div class="lang" role="group" aria-label="Volba jazyka">
+        <button type="button" aria-current="true">CZ</button>
+        <span class="bar" aria-hidden="true">/</span>
+        <button type="button">EN</button>
+      </div>
+      <a href="index.html#stahnout" class="btn is-solid is-mini">Stáhnout aplikaci</a>
+    </div>
+
+    <button class="burger" id="burger" aria-label="Otevřít menu" aria-expanded="false" aria-controls="menu">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#14372A" stroke-width="2.2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero" data-stop>
+    <div class="wrap hero-lead">
+      <p class="eyebrow">Ceník</p>
+      <h1>Cenu znáte<br>před rezervací</h1>
+      <p class="lede">
+        Každý hlídač si nastavuje vlastní sazby. My k nim připočítáme servisní poplatek
+        a ukážeme vám konečnou částku dřív, než potvrdíte rezervaci. Žádné doplatky na místě,
+        žádné poplatky schované v podmínkách.
+      </p>
+      <div class="hero-meta">
+        <span>Konečná cena před potvrzením</span>
+        <span>Platba kartou přes platformu</span>
+        <span>Storno zdarma 3 dny předem</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn is-solid" href="sluzby.html">Najít hlídače</a>
+        <a class="btn is-line" href="sluzby.html">Prohlédnout služby</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec on-sage" id="z-ceho-se-cena-sklada" data-stop>
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Z čeho se cena skládá</p>
+        <h2>Sazbu určuje hlídač,<br>my přidáme servisní poplatek</h2>
+        <p class="sub">
+          AniPals není půjčovna s jedním pevným ceníkem. Hlídač si na svém profilu nastaví
+          cenu za každou službu zvlášť — podle zkušeností, vybavení domácnosti i toho, kolik
+          zvířat najednou zvládne. Vy tedy porovnáváte skutečné sazby konkrétních lidí.
+        </p>
+      </div>
+
+      <div class="grid grid--3">
+        <article class="card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <ellipse cx="12" cy="6.5" rx="7" ry="3"></ellipse>
+            <path d="M5 6.5v5c0 1.66 3.13 3 7 3s7-1.34 7-3v-5"></path>
+            <path d="M5 11.5v5c0 1.66 3.13 3 7 3s7-1.34 7-3v-5"></path>
+          </svg>
+          <h3>Sazba hlídače</h3>
+          <p>Cena za noc, den nebo návštěvu, kterou si hlídač určuje sám. Vidíte ji přímo v profilu, ještě než napíšete první zprávu.</p>
+        </article>
+
+        <article class="card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z"></path><path d="M12 8v4l2.5 2.5"></path>
+          </svg>
+          <h3>Servisní poplatek</h3>
+          <p>Provize platformy ve výši 15 % ze sazby hlídače. Pokrývá ověřování hlídačů, zabezpečené platby, pojištění průběhu hlídání a podporu po celou dobu služby.</p>
+        </article>
+
+        <article class="card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 7H4a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1Z"></path><path d="M3 11h18"></path><path d="M7 15h3"></path>
+          </svg>
+          <h3>Konečná částka</h3>
+          <p>Součet obojího. Zobrazí se v rekapitulaci rezervace a už se nemění — bez ohledu na to, jak dlouho o rezervaci přemýšlíte.</p>
+        </article>
+      </div>
+
+      <div class="calc">
+        <p class="calc__caption">Příklad výpočtu — víkendové hlídání psa u hlídače, 2 noci</p>
+        <div class="calc__row">
+          <span>Sazba hlídače — 2 noci
+            <small>500 Kč / noc podle profilu hlídače</small>
+          </span>
+          <span class="num">1 000 Kč</span>
+        </div>
+        <div class="calc__row">
+          <span>Servisní poplatek AniPals
+            <small>15 % ze sazby hlídače</small>
+          </span>
+          <span class="num">150 Kč</span>
+        </div>
+        <div class="calc__row is-total">
+          <span>Zaplatíte</span>
+          <span class="num">1 150 Kč</span>
+        </div>
+        <p class="calc__note">
+          Ilustrativní příklad. Skutečná částka závisí na sazbě konkrétního hlídače,
+          druhu služby a délce hlídání.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="jak-zaplatit" data-stop>
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Platba</p>
+        <h2>Dva způsoby, jak zaplatit</h2>
+        <p class="sub">
+          Platí se vždy kartou přes platformu — nikdy hotově při předání. Peníze hlídač
+          dostane až po dokončení služby, takže máte jistotu obě strany.
+          Který model je u dané rezervace k dispozici, vidíte v rekapitulaci.
+        </p>
+      </div>
+
+      <div class="grid grid--2">
+        <article class="card">
+          <span class="card__tag">Celá částka předem</span>
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 6H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1Z"></path><path d="M3 10h18"></path><path d="M7 14h4"></path>
+          </svg>
+          <h3>Platba 100 % předem</h3>
+          <p>
+            Celá částka se strhne z karty ve chvíli, kdy hlídač rezervaci potvrdí.
+            Máte hotovo a už se k tomu nemusíte vracet.
+          </p>
+        </article>
+
+        <article class="card">
+          <span class="card__tag">Rozdělená platba</span>
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3v18"></path><path d="M4 7h5"></path><path d="M4 12h5"></path><path d="M15 12h5"></path><path d="M15 17h5"></path>
+          </svg>
+          <h3>Platba 50 / 50</h3>
+          <p>
+            Polovinu zaplatíte jako zálohu při rezervaci. Druhá polovina se na kartě
+            pouze zablokuje a strhne se automaticky po úspěšném dokončení hlídání.
+          </p>
+        </article>
+      </div>
+
+      <div class="callout">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3 4 6.5v5c0 4.4 3.2 8.2 8 9.5 4.8-1.3 8-5.1 8-9.5v-5L12 3Z"></path><path d="m9 12 2 2 4-4"></path>
+        </svg>
+        <div>
+          <h3>Blokace není platba</h3>
+          <p>
+            U modelu 50 / 50 se zbývající částka na kartě pouze rezervuje. Nemůžete ji
+            zatím utratit, ale ani z účtu neodejde. Pokud hlídání neproběhne, blokace
+            se uvolní zpět.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec on-forest" id="slevy" data-stop>
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Slevy</p>
+        <h2>Promo kódy a balíčky</h2>
+        <p class="sub">
+          Pravidelně vydáváme slevové kódy a zvýhodněné balíčky — například víkendovou péči
+          se slevou 15 %. Kód zadáte v posledním kroku rezervace a částka se přepočítá ještě
+          před potvrzením.
+        </p>
+      </div>
+
+      <div class="grid grid--3">
+        <article class="card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20.6 11.4 12.6 3.4A2 2 0 0 0 11.2 3H5a2 2 0 0 0-2 2v6.2c0 .5.2 1 .6 1.4l8 8a2 2 0 0 0 2.8 0l6.2-6.2a2 2 0 0 0 0-2.8Z"></path><path d="M7.5 7.5h.01"></path>
+          </svg>
+          <h3>Kde kódy najdete</h3>
+          <p>V e-mailu, v aplikaci a na našich sítích. Aktuálně platné akce ukazujeme také přímo v košíku rezervace.</p>
+        </article>
+
+        <article class="card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M8 3H5a2 2 0 0 0-2 2v3"></path><path d="M16 3h3a2 2 0 0 1 2 2v3"></path><path d="M8 21H5a2 2 0 0 1-2-2v-3"></path><path d="M16 21h3a2 2 0 0 0 2-2v-3"></path><path d="M9 15 15 9"></path>
+          </svg>
+          <h3>Jak se uplatní</h3>
+          <p>Kód vložíte před platbou. Sleva se odečte z celkové částky a zůstane vidět v rekapitulaci i na dokladu.</p>
+        </article>
+
+        <article class="card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z"></path><path d="M12 16v-4"></path><path d="M12 8h.01"></path>
+          </svg>
+          <h3>Co je dobré vědět</h3>
+          <p>Kódy mají platnost a nedají se kombinovat. Sleva se vztahuje na cenu hlídání, ne na servisní poplatek.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="storno" data-stop>
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Storno podmínky</p>
+        <h2>Pravidla platí<br>pro obě strany stejně</h2>
+        <p class="sub">
+          Zrušit rezervaci může majitel i hlídač. Čím dřív se to stane, tím menší dopad to má —
+          pro majitele finančně, pro hlídače i na jeho postavení na platformě.
+          Rozhoduje termín předání zvířete.
+        </p>
+      </div>
+
+      <div class="tbl-head">
+        <h3>Když ruší majitel</h3>
+        <p>Vratka se posílá zpět na kartu, ze které jste platili.</p>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th scope="col">Kdy rušíte</th><th scope="col">Co se vrací</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>3 dny a dřív</td>
+              <td>Vracíme 100 % částky
+                <p>Bez jakéhokoli poplatku. Hlídač má dost času najít si jinou zakázku.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>1–2 dny předem</td>
+              <td>Vracíme 50 % částky
+                <p>Druhá polovina zůstává hlídači jako kompenzace za termín, který už nestihne nabídnout někomu jinému.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>V den předání</td>
+              <td>Vratka se neposílá
+                <p>Termín už nelze nikomu nabídnout. Částka zůstává hlídači v plné výši.</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tbl-head">
+        <h3>Když ruší hlídač</h3>
+        <p>Majiteli se v každém z těchto případů vrací celá zaplacená částka.</p>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th scope="col">Kdy ruší</th><th scope="col">Co to pro hlídače znamená</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>3 dny a dřív</td>
+              <td>Bez finanční sankce
+                <p>Zruší se mu ale interní skóre spolehlivosti, které ovlivňuje pořadí ve vyhledávání.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>1–2 dny předem</td>
+              <td>Sankce a dočasná blokace
+                <p>Sankci strháváme z budoucích výdělků. Profil se na určenou dobu skryje z vyhledávání.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>V den předání</td>
+              <td>Trvalé zablokování
+                <p>Platí, pokud pro zrušení není vážný důvod. K zablokování profilu se přidává pokuta.</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 8h18"></path><path d="M3 16h18"></path><path d="M8 3v18"></path><path d="M16 3v18"></path>
+        </svg>
+        <div>
+          <h3>Výjimka: vyšší moc</h3>
+          <p>
+            Nemoc, úraz a jiné prokazatelné překážky sankcím nepodléhají. V takové chvíli
+            aktivujeme <a href="sluzby.html#zachranna-sit" style="color:var(--moss); font-weight:500;">Záchrannou síť</a> a hledáme
+            majiteli náhradního hlídače, aby zvíře nezůstalo bez péče.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="close" data-stop>
+    <div class="wrap">
+      <p class="eyebrow">Začněte</p>
+      <h2>Podívejte se, kolik stojí<br>hlídači ve vašem okolí</h2>
+      <p>
+        Vyhledávání je zdarma a nezávazné. Sazby, hodnocení i volné termíny uvidíte
+        dřív, než se rozhodnete kohokoli oslovit.
+      </p>
+      <div class="cta-row">
+        <a class="btn is-solid" href="sluzby.html">Najít hlídače</a>
+        <a class="btn is-line" href="registrace-hlidac.html">Stát se hlídačem</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="ftr" id="kontakt">
+  <div class="wrap">
+    <div class="ftr-grid">
+      <div>
+        <div class="ftr-brand">AniPals</div>
+        <p style="margin-top:8px;">Parťáci pro vaše mazlíčky. Ověření hlídači po celé České republice.</p>
+      </div>
+      <div>
+        <h4>Platforma</h4>
+        <ul>
+          <li><a href="jak-to-funguje.html">Jak to funguje</a></li>
+          <li><a href="sluzby.html">Služby</a></li>
+          <li><a href="cenik.html">Ceník</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Pro hlídače</h4>
+        <ul>
+          <li><a href="registrace-hlidac.html">Staňte se hlídačem</a></li>
+          <li><a href="index.html#bezpeci">Bezpečnost a pojištění</a></li>
+          <li><a href="jak-to-funguje.html#otazky">Časté dotazy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="mailto:info@anipals.cz">info@anipals.cz</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ftr-btm">
+      <span>© 2026 AniPals — parťáci pro vaše mazlíčky.</span>
+      <span><a href="podminky.html">Obchodní podmínky</a> · <a href="soukromi.html">Ochrana osobních údajů</a> · <a href="cookies.html">Cookies</a></span>
+    </div>
+  </div>
+</footer>
+
+</div><!-- /.page -->
+
+<script src="js/script.js"></script>
+</body>
+</html>
