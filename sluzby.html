@@ -1,125 +1,382 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="cs">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Služby — AniPals</title>
 <meta name="description" content="Pět způsobů, jak se u AniPals postaráme o vaše zvíře — od nonstop péče u vás doma po jednorázové venčení. Vyberte podle toho, kde péče probíhá a jestli hlídač zůstává přes noc.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400..700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --zelena:#14372A;
+  --mech:#2F6B45;
+  --list:#189D64;
+  --salvej:#E7EFE4;
+  --horcice:#D9A03C;
+  --horcice-tmava:#8A5C12;
+  --kura:#8B5A3A;
+  --papir:#FBF7EF;
+  --inkoust:#22302A;
+  --inkoust-svetly:#5E6B63;
+  --linka:#DCD5C4;
+
+  --serif:"Source Serif 4",Georgia,serif;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+
+  --sirka:1060px;
+  --voditko:120px;
+  --radius:2px;
+  --stin:0 10px 22px rgba(20,55,42,.22);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--papir);
+  color:var(--inkoust);
+  font-family:var(--sans);
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+
+/* ---------- typografie ---------- */
+h1,h2,h3{font-family:var(--serif);font-weight:600;letter-spacing:-.012em;margin:0}
+h1{font-size:clamp(44px,6vw,76px);line-height:1.04}
+h2{font-size:clamp(32px,4.2vw,50px);line-height:1.1}
+h3{font-size:23px;line-height:1.25}
+.eyebrow{
+  font-family:var(--mono);font-size:12px;text-transform:uppercase;
+  letter-spacing:.16em;color:var(--horcice-tmava);margin:0 0 14px;
+}
+.perex{font-size:19.5px;color:var(--inkoust-svetly);max-width:62ch;margin:18px 0 0}
+.podnadpis{color:var(--inkoust-svetly);max-width:64ch;margin:16px 0 0}
+
+/* ---------- rozvržení ---------- */
+.obal{max-width:var(--sirka);margin:0 auto;padding:0 28px}
+.sekce{padding:96px 0;position:relative;scroll-margin-top:80px}
+.sekce--papir{background:var(--papir)}
+.sekce--salvej{background:var(--salvej)}
+.sekce--zelena{background:var(--zelena);color:var(--papir)}
+.sekce--horcice{background:var(--horcice);color:var(--zelena)}
+.sekce--zelena .eyebrow{color:var(--horcice)}
+.sekce--zelena .podnadpis,.sekce--zelena .perex{color:rgba(251,247,239,.76)}
+.sekce--horcice .eyebrow{color:#6B4608}
+.sekce--horcice .podnadpis{color:rgba(20,55,42,.8)}
+@media(min-width:1181px){
+  .obal{padding-left:calc(28px + var(--voditko))}
+}
+@media(max-width:760px){
+  .sekce{padding:60px 0}
+}
+
+/* ---------- tlačítka ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  font-family:var(--sans);font-size:16px;font-weight:600;
+  padding:15px 26px;border:2px solid transparent;border-radius:var(--radius);
+  text-decoration:none;cursor:pointer;
+  transition:transform .18s ease,box-shadow .18s ease,background .18s ease,color .18s ease;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:var(--stin)}
+.btn:focus-visible{outline:3px solid var(--horcice);outline-offset:3px}
+.is-solid{background:var(--zelena);color:var(--papir);border-color:var(--zelena)}
+.is-solid:hover{background:var(--mech);border-color:var(--mech)}
+.is-line{background:transparent;color:var(--zelena);border-color:var(--zelena)}
+.is-line:hover{background:rgba(20,55,42,.06)}
+.is-mustard{background:var(--horcice);color:var(--zelena);border-color:var(--horcice)}
+.is-mustard:hover{background:#E8B457;border-color:#E8B457}
+.is-mini{padding:9px 16px;font-size:14px}
+
+/* ---------- hlavička ---------- */
+.hlavicka{
+  position:sticky;top:0;z-index:60;
+  background:rgba(251,247,239,.86);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--linka);
+}
+.hlavicka-obal{
+  max-width:1240px;margin:0 auto;padding:14px 28px;
+  display:flex;align-items:center;gap:26px;
+}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex:none}
+.logo-znak{width:34px;height:34px;flex:none}
+.logo-text{font-family:var(--serif);font-size:24px;font-weight:600;color:var(--zelena);letter-spacing:-.02em}
+.menu{display:flex;align-items:center;gap:26px;margin-left:auto}
+.menu a{
+  font-size:15.5px;text-decoration:none;color:var(--inkoust);
+  position:relative;padding:6px 0;
+}
+.menu a::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:2px;
+  background:var(--horcice);transform:scaleX(0);transform-origin:left;
+  transition:transform .2s ease;
+}
+.menu a:hover::after,.menu a[aria-current="page"]::after{transform:scaleX(1)}
+.menu a:focus-visible{outline:3px solid var(--horcice);outline-offset:3px}
+.menu a.prihlasit{
+  border:2px solid var(--mech);border-radius:var(--radius);
+  padding:7px 15px;color:var(--zelena);font-weight:600;font-size:14.5px;
+}
+.menu a.prihlasit::after{display:none}
+.menu a.prihlasit:hover{background:var(--mech);color:var(--papir)}
+.jazyky{display:flex;gap:8px;font-family:var(--mono);font-size:12px;letter-spacing:.06em}
+
+/* roletka v menu */
+.ma-roletku{position:relative;display:flex;align-items:center;gap:2px}
+.sipka{
+  background:none;border:none;padding:6px 2px;cursor:pointer;color:var(--inkoust);
+  display:flex;align-items:center;
+}
+.sipka svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s ease}
+.sipka[aria-expanded="true"] svg{transform:rotate(180deg)}
+.sipka:focus-visible{outline:3px solid var(--horcice);outline-offset:2px}
+.roletka{
+  display:none;position:absolute;top:100%;left:-16px;margin-top:14px;
+  min-width:216px;list-style:none;padding:8px 0;
+  background:var(--papir);border:1px solid var(--linka);border-radius:var(--radius);
+  box-shadow:var(--stin);z-index:70;
+}
+.roletka.otevrena{display:block}
+.roletka a{
+  display:block;padding:9px 20px;font-size:15px;text-decoration:none;color:var(--inkoust);
+  border-left:2px solid transparent;
+}
+.roletka a::after{display:none}
+.roletka a:hover{background:var(--salvej);border-left-color:var(--horcice);color:var(--zelena)}
+.roletka a:focus-visible{outline:3px solid var(--horcice);outline-offset:-3px}
+@media(min-width:761px){
+  .ma-roletku:hover .roletka,.ma-roletku:focus-within .roletka{display:block}
+  .ma-roletku::after{content:"";position:absolute;left:0;right:-16px;top:100%;height:16px}
+}
+@media(max-width:760px){
+  .ma-roletku{display:block;width:100%}
+  .ma-roletku .sipka{position:absolute;right:0;top:0;padding:6px 0}
+  .roletka{
+    position:static;margin:6px 0 8px 2px;padding:0;min-width:0;
+    border:none;border-left:2px solid var(--linka);border-radius:0;box-shadow:none;background:none;
+  }
+  .roletka a{padding:8px 0 8px 16px;border-left:none;color:var(--inkoust-svetly)}
+  .roletka a:hover{background:none;color:var(--zelena)}
+}
+.jazyky a{text-decoration:none;color:var(--inkoust-svetly)}
+.jazyky a[aria-current="true"]{color:var(--zelena);font-weight:500}
+.hamburger{display:none;background:none;border:2px solid var(--zelena);border-radius:var(--radius);padding:8px 10px;margin-left:auto;cursor:pointer}
+.hamburger span{display:block;width:18px;height:2px;background:var(--zelena);margin:3px 0}
+@media(max-width:760px){
+  .hamburger{display:block}
+  .menu{
+    display:none;position:absolute;top:100%;left:0;right:0;
+    flex-direction:column;align-items:flex-start;gap:6px;
+    background:var(--papir);border-bottom:1px solid var(--linka);padding:18px 28px 24px;
+  }
+  .menu.otevrene{display:flex}
+  .jazyky{order:99}
+}
+
+/* ---------- vodítko ---------- */
+#voditko{
+  position:absolute;top:0;left:0;width:var(--voditko);
+  pointer-events:none;z-index:1;overflow:visible;
+}
+#voditko-cara{
+  fill:none;stroke:var(--horcice);stroke-width:3;
+  stroke-linecap:round;stroke-linejoin:round;
+}
+.karabinka{fill:var(--papir);stroke:var(--horcice);stroke-width:3}
+@media(max-width:1180px){#voditko{display:none}}
+
+/* ---------- hero ---------- */
+.hero{padding-top:84px;padding-bottom:72px}
+.hero .perex{margin-top:22px}
+.hero-akce{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.hero-fakta{
+  display:flex;flex-wrap:wrap;gap:0 40px;margin-top:44px;
+  border-top:1px solid var(--linka);padding-top:22px;
+}
+.fakt{padding:8px 0}
+.fakt dt{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--horcice-tmava)}
+.fakt dd{margin:4px 0 0;font-size:16px;color:var(--inkoust-svetly)}
+
+/* ---------- karty služeb ---------- */
+.sluzby{display:grid;gap:22px;margin-top:44px}
+.sluzba{
+  background:var(--papir);border:1px solid var(--linka);border-radius:var(--radius);
+  padding:32px;display:grid;grid-template-columns:44px 1fr;gap:0 22px;align-items:start;
+  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+}
+.sluzba:hover{transform:translateY(-2px);box-shadow:var(--stin);border-color:var(--mech)}
+.sluzba .ikona{grid-row:span 2;color:var(--mech)}
+.sluzba h3{margin-bottom:8px}
+.sluzba .meta{
+  font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--horcice-tmava);margin:0 0 12px;
+}
+.sluzba p{margin:0;color:var(--inkoust-svetly)}
+.sluzba .pro{
+  margin:16px 0 0;padding-top:14px;border-top:1px solid var(--linka);
+  font-size:15.5px;color:var(--inkoust-svetly);
+}
+.sluzba .pro strong{color:var(--inkoust);font-weight:600}
+@media(min-width:901px){
+  .sluzby{grid-template-columns:1fr 1fr}
+  .sluzba--siroka{grid-column:1 / -1}
+}
+@media(max-width:520px){
+  .sluzba{grid-template-columns:1fr;padding:26px}
+  .sluzba .ikona{grid-row:auto;margin-bottom:14px}
+}
+.ikona svg{width:30px;height:30px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- porovnání ---------- */
+.tabulka-obal{margin-top:44px;overflow-x:auto}
+table.porovnani{border-collapse:collapse;width:100%;min-width:620px}
+table.porovnani th,table.porovnani td{
+  text-align:left;padding:16px 18px;border-bottom:1px solid var(--linka);vertical-align:top;
+}
+table.porovnani thead th{
+  font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.16em;
+  color:var(--horcice-tmava);font-weight:400;border-bottom:2px solid var(--linka);
+}
+table.porovnani tbody th{font-weight:600;font-size:16.5px;width:34%}
+table.porovnani td{color:var(--inkoust-svetly);font-size:16px}
+table.porovnani tbody tr:hover{background:rgba(231,239,228,.5)}
+
+.poznamka{
+  margin-top:36px;padding:26px 28px;border-radius:var(--radius);
+  border-left:3px solid var(--horcice);background:rgba(217,160,60,.12);
+}
+.sekce--papir .poznamka{background:var(--salvej);border-left-color:var(--mech)}
+.poznamka h3{font-size:20px;margin-bottom:8px}
+.poznamka p{margin:0;font-size:16px}
+.sekce--zelena .poznamka p{color:rgba(251,247,239,.8)}
+.sekce--papir .poznamka p{color:var(--inkoust-svetly)}
+
+/* ---------- závěr ---------- */
+.zaver{text-align:left}
+.zaver .akce{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
+.zaver .is-line{border-color:var(--zelena);color:var(--zelena)}
+.zaver .is-solid{background:var(--zelena);border-color:var(--zelena);color:var(--horcice)}
+
+/* ---------- patička ---------- */
+.paticka{background:var(--zelena);color:rgba(251,247,239,.72);padding:64px 0 40px}
+.paticka .obal{display:grid;gap:36px}
+@media(min-width:900px){.paticka .obal{grid-template-columns:1.4fr 1fr 1fr}}
+.paticka h4{
+  font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.16em;
+  color:var(--horcice);margin:0 0 14px;font-weight:400;
+}
+.paticka ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.paticka a{text-decoration:none;color:rgba(251,247,239,.72)}
+.paticka a:hover{color:var(--papir);text-decoration:underline;text-underline-offset:3px}
+.paticka a:focus-visible{outline:3px solid var(--horcice);outline-offset:3px}
+.paticka .znacka{font-family:var(--serif);font-size:26px;color:var(--papir);margin:0 0 10px}
+.paticka .drobne{
+  max-width:var(--sirka);margin:44px auto 0;padding:20px 28px 0;
+  border-top:1px solid rgba(251,247,239,.16);
+  font-family:var(--mono);font-size:12px;letter-spacing:.04em;
+}
+@media(min-width:1181px){.paticka .drobne{padding-left:calc(28px + var(--voditko))}}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important;animation:none!important}
+}
+</style>
 </head>
 <body>
 
-<svg id="leash" aria-hidden="true"></svg>
-
-<div class="page">
-
-<header class="hdr">
-  <div class="hdr-in">
-    <a class="brand" href="index.html" aria-label="AniPals — domů">
-      <img src="logo.png" alt="AniPals">
+<header class="hlavicka">
+  <div class="hlavicka-obal">
+    <a class="logo" href="index.html" aria-label="AniPals — domů">
+      <svg class="logo-znak" viewBox="0 0 24 24" fill="none" stroke="#2F6B45" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 20c-3.2 0-5.6-2-5.6-4.4 0-2 1.9-3.6 3.2-5 .9-1 1.6-2 2.4-2s1.5 1 2.4 2c1.3 1.4 3.2 3 3.2 5C17.6 18 15.2 20 12 20Z"/>
+        <circle cx="5.4" cy="8.8" r="1.9"/><circle cx="18.6" cy="8.8" r="1.9"/>
+        <circle cx="9.4" cy="4.6" r="1.9"/><circle cx="14.6" cy="4.6" r="1.9"/>
+      </svg>
+      <span class="logo-text">AniPals</span>
     </a>
 
-    <nav class="menu" id="menu">
-      <a href="index.html">Domů</a>
-
-      <span class="has-sub">
-        <a href="jak-to-funguje.html">Jak to funguje</a>
-        <button class="sub-toggle" aria-expanded="false" aria-controls="submenu-jak" aria-label="Zobrazit sekce stránky Jak to funguje">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg>
-        </button>
-        <span class="submenu" id="submenu-jak">
-          <a href="jak-to-funguje.html#prehled">Přehled</a>
-          <a href="jak-to-funguje.html#postup">Celý postup</a>
-          <a href="jak-to-funguje.html#otazky">Otázky před objednáním</a>
-        </span>
-      </span>
-
-      <span class="has-sub">
-        <a href="sluzby.html" aria-current="page">Služby</a>
-        <button class="sub-toggle" aria-expanded="false" aria-controls="submenu-sluzby" aria-label="Zobrazit sekce stránky Služby">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg>
-        </button>
-        <span class="submenu" id="submenu-sluzby">
-          <a href="sluzby.html#sluzby">Přehled</a>
-          <a href="sluzby.html#jak-vybrat">Jak vybrat</a>
-          <a href="sluzby.html#zachranna-sit">Záchranná síť</a>
-        </span>
-      </span>
-
-      <span class="has-sub">
-        <a href="cenik.html">Ceník</a>
-        <button class="sub-toggle" aria-expanded="false" aria-controls="submenu-cenik" aria-label="Zobrazit sekce stránky Ceník">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg>
-        </button>
-        <span class="submenu" id="submenu-cenik">
-          <a href="cenik.html#z-ceho-se-cena-sklada">Z čeho se cena skládá</a>
-          <a href="cenik.html#jak-zaplatit">Jak zaplatit</a>
-          <a href="cenik.html#slevy">Slevy</a>
-          <a href="cenik.html#storno">Storno podmínky</a>
-        </span>
-      </span>
-
-      <a href="#kontakt">Kontakt</a>
-      <a href="prihlaseni.html" class="menu-login">Přihlásit se</a>
-    </nav>
-
-    <div class="hdr-right">
-      <div class="lang" role="group" aria-label="Volba jazyka">
-        <button type="button" aria-current="true">CZ</button>
-        <span class="bar" aria-hidden="true">/</span>
-        <button type="button">EN</button>
-      </div>
-      <a href="index.html#stahnout" class="btn is-solid is-mini">Stáhnout aplikaci</a>
-    </div>
-
-    <button class="burger" id="burger" aria-label="Otevřít menu" aria-expanded="false" aria-controls="menu">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#14372A" stroke-width="2.2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    <button class="hamburger" aria-expanded="false" aria-controls="menu" aria-label="Otevřít menu">
+      <span></span><span></span><span></span>
     </button>
+
+    <nav class="menu" id="menu" aria-label="Hlavní">
+      <a href="index.html">Domů</a>
+      <a href="jak-to-funguje.html">Jak to funguje</a>
+      <div class="ma-roletku">
+        <a href="sluzby.html" aria-current="page">Služby</a>
+        <button class="sipka" aria-expanded="false" aria-controls="roletka-sluzby" aria-label="Zobrazit sekce stránky Služby">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9.5 6 6 6-6"/></svg>
+        </button>
+        <ul class="roletka" id="roletka-sluzby">
+          <li><a href="#sluzby">Přehled</a></li>
+          <li><a href="#jak-vybrat">Jak vybrat</a></li>
+          <li><a href="#zachranna-sit">Záchranná síť</a></li>
+        </ul>
+      </div>
+      <a href="cenik.html">Ceník</a>
+      <a href="kontakt.html">Kontakt</a>
+      <span class="jazyky">
+        <a href="#" aria-current="true">CZ</a><span aria-hidden="true">/</span><a href="#">EN</a>
+      </span>
+      <a class="prihlasit" href="#">Přihlásit se</a>
+    </nav>
   </div>
 </header>
 
-<main id="top">
+<svg id="voditko" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+  <path id="voditko-cara" d=""/>
+  <g id="voditko-karabinky"></g>
+</svg>
 
-  <section class="hero" data-stop>
-    <div class="wrap hero-lead">
+<main>
+
+  <!-- 1. hero — papírová -->
+  <section class="sekce sekce--papir hero" data-stop>
+    <div class="obal">
       <p class="eyebrow">Služby</p>
       <h1>Pět způsobů,<br>jak se staráme</h1>
-      <p class="lede">
+      <p class="perex">
         Liší se místem, délkou a tím, kdo se komu přizpůsobí. Vyberte si podle toho,
         co bude pro vaše zvíře nejmenší změna — o zbytek se postaráme my.
       </p>
-      <div class="cta-row">
+      <div class="hero-akce">
         <a class="btn is-solid" href="#sluzby">Prohlédnout služby</a>
         <a class="btn is-line" href="#jak-vybrat">Porovnat služby</a>
       </div>
-      <dl class="hero-facts">
-        <div class="fact"><dt>Zvířata</dt><dd>psi, kočky, králíci, hlodavci, ptáci, terarijní zvířata, rybičky</dd></div>
-        <div class="fact"><dt>Hlídači</dt><dd>ověřená totožnost, pojištění, osobní seznámení předem</dd></div>
+      <dl class="hero-fakta">
+        <div class="fakt"><dt>Zvířata</dt><dd>psi, kočky, králíci, hlodavci, ptáci, terarijní zvířata, rybičky</dd></div>
+        <div class="fakt"><dt>Hlídači</dt><dd>ověřená totožnost, pojištění, osobní seznámení předem</dd></div>
       </dl>
     </div>
   </section>
 
-  <section class="sec on-sage" id="sluzby" data-stop>
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="eyebrow">Přehled</p>
-        <h2>Co si můžete objednat</h2>
-        <p class="sub">
-          U každé služby píšeme, kde péče probíhá a jestli hlídač zůstává přes noc.
-          To jsou dvě věci, které rozhodují nejčastěji.
-        </p>
-      </div>
+  <!-- 2. přehled služeb — šalvějová -->
+  <section class="sekce sekce--salvej" id="sluzby" data-stop>
+    <div class="obal">
+      <p class="eyebrow">Přehled</p>
+      <h2>Co si můžete objednat</h2>
+      <p class="podnadpis">
+        U každé služby píšeme, kde péče probíhá a jestli hlídač zůstává přes noc.
+        To jsou dvě věci, které rozhodují nejčastěji.
+      </p>
 
-      <div class="svcs-detail">
+      <div class="sluzby">
 
-        <article class="svc-detail">
-          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.4 9.6V20h13.2V9.6"/><path d="M12 20v-4.2"/><path d="M9.6 15.8h4.8"/><path d="M15.8 5.6V3.4h2.6v4.4"/></svg>
+        <article class="sluzba">
+          <span class="ikona" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.4 9.6V20h13.2V9.6"/><path d="M12 20v-4.2"/><path d="M9.6 15.8h4.8"/><path d="M15.8 5.6V3.4h2.6v4.4"/></svg>
+          </span>
           <div>
             <h3>24/7 Domácí péče</h3>
-            <span class="tick">Nonstop · u vás doma · s přespáním</span>
+            <p class="meta">Nonstop · u vás doma · s přespáním</p>
             <p>
               Hlídač se k vám na dobu vaší nepřítomnosti dočasně nastěhuje. Zvíře zůstává ve
               svém prostředí, ve svém rytmu a mezi svými pachy, nemusí si tedy zvykat na nic
@@ -130,11 +387,13 @@
           </div>
         </article>
 
-        <article class="svc-detail">
-          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11 12 3.6 21 11"/><path d="M5.4 10.2V20h13.2v-9.8"/><path d="M8 17.4h8"/><path d="M8 17.4v-2.6a1.6 1.6 0 0 1 1.6-1.6h4.8a1.6 1.6 0 0 1 1.6 1.6v2.6"/><path d="M8 17.4V19"/><path d="M16 17.4V19"/></svg>
+        <article class="sluzba">
+          <span class="ikona" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3 11 12 3.6 21 11"/><path d="M5.4 10.2V20h13.2v-9.8"/><path d="M8 17.4h8"/><path d="M8 17.4v-2.6a1.6 1.6 0 0 1 1.6-1.6h4.8a1.6 1.6 0 0 1 1.6 1.6v2.6"/><path d="M8 17.4V19"/><path d="M16 17.4V19"/></svg>
+          </span>
           <div>
             <h3>24/7 Hotelová péče</h3>
-            <span class="tick">Nonstop · u hlídače · s přespáním</span>
+            <p class="meta">Nonstop · u hlídače · s přespáním</p>
             <p>
               Zvíře bydlí po celou dobu u hlídače doma. Jedná se o domácnost s běžným denním
               režimem – hlídač nemá žádné kotce ani boxy, tudíž zvíře nebude zavíráno, pokud
@@ -145,11 +404,13 @@
           </div>
         </article>
 
-        <article class="svc-detail">
-          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.6"/><path d="M12 3.2v2.2"/><path d="M12 18.6v2.2"/><path d="M4.8 12H2.6"/><path d="M21.4 12h-2.2"/><path d="m6.9 6.9-1.6-1.6"/><path d="m18.7 18.7-1.6-1.6"/><path d="m6.9 17.1-1.6 1.6"/><path d="m18.7 5.3-1.6 1.6"/></svg>
+        <article class="sluzba">
+          <span class="ikona" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.6"/><path d="M12 3.2v2.2"/><path d="M12 18.6v2.2"/><path d="M4.8 12H2.6"/><path d="M21.4 12h-2.2"/><path d="m6.9 6.9-1.6-1.6"/><path d="m18.7 18.7-1.6-1.6"/><path d="m6.9 17.1-1.6 1.6"/><path d="m18.7 5.3-1.6 1.6"/></svg>
+          </span>
           <div>
             <h3>Denní hlídání u vás doma</h3>
-            <span class="tick">Přes den · u vás doma · bez přespání</span>
+            <p class="meta">Přes den · u vás doma · bez přespání</p>
             <p>
               Hlídač je u vás doma jen během dne — nakrmí, vyvenčí, pohraje si a uklidí po sobě.
               Večer odchází, noc má zvíře samo. Vhodné, když jste na dlouhé směně nebo služební
@@ -159,11 +420,13 @@
           </div>
         </article>
 
-        <article class="svc-detail">
-          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.4 8.4h11.2a1.6 1.6 0 0 1 1.6 1.6v8a1.6 1.6 0 0 1-1.6 1.6H6.4a1.6 1.6 0 0 1-1.6-1.6v-8a1.6 1.6 0 0 1 1.6-1.6Z"/><path d="M9 8.4V6.2a3 3 0 0 1 6 0v2.2"/><path d="M4.8 13.4h14.4"/></svg>
+        <article class="sluzba">
+          <span class="ikona" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6.4 8.4h11.2a1.6 1.6 0 0 1 1.6 1.6v8a1.6 1.6 0 0 1-1.6 1.6H6.4a1.6 1.6 0 0 1-1.6-1.6v-8a1.6 1.6 0 0 1 1.6-1.6Z"/><path d="M9 8.4V6.2a3 3 0 0 1 6 0v2.2"/><path d="M4.8 13.4h14.4"/></svg>
+          </span>
           <div>
             <h3>Denní hlídání u hlídače</h3>
-            <span class="tick">Přes den · u hlídače · bez přespání</span>
+            <p class="meta">Přes den · u hlídače · bez přespání</p>
             <p>
               Zvířecí školička. Ráno zvíře předáte, odpoledne či k večeru si ho vyzvednete. Mezitím má
               společnost, pohyb a pravidelný program. Předání i vyzvednutí si domluvíte
@@ -173,11 +436,13 @@
           </div>
         </article>
 
-        <article class="svc-detail is-wide">
-          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.4"/><path d="M12 7.2V12l3.2 1.9"/></svg>
+        <article class="sluzba sluzba--siroka">
+          <span class="ikona" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.4"/><path d="M12 7.2V12l3.2 1.9"/></svg>
+          </span>
           <div>
             <h3>Jednorázové návštěvy a venčení</h3>
-            <span class="tick">30–60 minut · u vás doma · bez přespání</span>
+            <p class="meta">30–60 minut · u vás doma · bez přespání</p>
             <p>
               Krátká návštěva u vás doma na konkrétní úkol: nakrmit kočky, králíky, rybičky
               nebo terarijní zvířata, vyčistit toaletu a doplnit vodu, nebo vzít psa na
@@ -192,19 +457,18 @@
     </div>
   </section>
 
-  <section class="sec" id="jak-vybrat" data-stop>
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="eyebrow">Jak vybrat</p>
-        <h2>Vedle sebe</h2>
-        <p class="sub">
-          Pokud si nejste jistí, ptejte se na jedinou věc: co bude pro vaše zvíře menší změna —
-          cizí člověk doma, nebo cizí domov?
-        </p>
-      </div>
+  <!-- 3. porovnání — papírová -->
+  <section class="sekce sekce--papir" id="jak-vybrat" data-stop>
+    <div class="obal">
+      <p class="eyebrow">Jak vybrat</p>
+      <h2>Vedle sebe</h2>
+      <p class="podnadpis">
+        Pokud si nejste jistí, ptejte se na jedinou věc: co bude pro vaše zvíře menší změna —
+        cizí člověk doma, nebo cizí domov?
+      </p>
 
-      <div class="table-scroll">
-        <table>
+      <div class="tabulka-obal">
+        <table class="porovnani">
           <thead>
             <tr>
               <th scope="col">Služba</th>
@@ -223,77 +487,179 @@
         </table>
       </div>
 
-      <div class="callout">
-        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6.5v5c0 4.4 3.2 8.2 8 9.5 4.8-1.3 8-5.1 8-9.5v-5L12 3Z"/><path d="m9 12 2 2 4-4"/></svg>
-        <div>
-          <h3>Plnou moc k veterináři řešíme u všech služeb</h3>
-          <p>
-            Před začátkem hlídání podepíšete hlídači plnou moc k ošetření zvířete. Když se něco
-            stane, veterinář ho ošetří okamžitě a nečeká, až se dovolá vám.
-          </p>
-        </div>
+      <div class="poznamka">
+        <h3>Plnou moc k veterináři řešíme u všech služeb</h3>
+        <p>
+          Před začátkem hlídání podepíšete hlídači plnou moc k ošetření zvířete. Když se něco
+          stane, veterinář ho ošetří okamžitě a nečeká, až se dovolá vám.
+        </p>
       </div>
     </div>
   </section>
 
-  <section class="close" id="zachranna-sit" data-stop>
-    <div class="wrap">
+  <!-- 6. závěr — hořčicová -->
+  <section class="sekce sekce--horcice zaver" id="zachranna-sit" data-stop>
+    <div class="obal">
       <p class="eyebrow">Záchranná síť</p>
       <h2>Nikdy nezůstanete bez hlídače</h2>
-      <p>
+      <p class="podnadpis">
         Když hlídač na poslední chvíli vypadne z vážného důvodu, obvoláváme za vás ostatní
         hlídače ve vašem okolí. Vy nemusíte dělat nic a nic navíc neplatíte.
       </p>
-      <div class="cta-row">
-        <a class="btn is-solid" href="#sluzby">Najít hlídače</a>
-        <a class="btn is-line" href="registrace-hlidac.html">Chci hlídat</a>
+      <div class="akce">
+        <a class="btn is-solid" href="index.html#sluzby">Najít hlídače</a>
+        <a class="btn is-line" href="jak-to-funguje.html#prehled">Chci hlídat</a>
       </div>
     </div>
   </section>
 
 </main>
 
-<footer class="ftr" id="kontakt">
-  <div class="wrap">
-    <div class="ftr-grid">
-      <div>
-        <div class="ftr-brand">AniPals</div>
-        <p style="margin-top:8px;">Parťáci pro vaše mazlíčky. Ověření hlídači po celé České republice.</p>
-      </div>
-      <div>
-        <h4>Platforma</h4>
-        <ul>
-          <li><a href="jak-to-funguje.html">Jak to funguje</a></li>
-          <li><a href="sluzby.html">Služby</a></li>
-          <li><a href="cenik.html">Ceník</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Pro hlídače</h4>
-        <ul>
-          <li><a href="registrace-hlidac.html">Staňte se hlídačem</a></li>
-          <li><a href="index.html#bezpeci">Bezpečnost a pojištění</a></li>
-          <li><a href="jak-to-funguje.html#otazky">Časté dotazy</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Kontakt</h4>
-        <ul>
-          <li><a href="mailto:info@anipals.cz">info@anipals.cz</a></li>
-          <li><a href="#">Instagram</a></li>
-          <li><a href="#">Facebook</a></li>
-        </ul>
-      </div>
+<footer class="paticka">
+  <div class="obal">
+    <div>
+      <p class="znacka">AniPals</p>
+      <p style="margin:0;max-width:38ch">Parťáci pro vaše zvíře. Ověření hlídači po celé České republice.</p>
     </div>
-    <div class="ftr-btm">
-      <span>© 2026 AniPals — parťáci pro vaše mazlíčky.</span>
-      <span><a href="podminky.html">Obchodní podmínky</a> · <a href="soukromi.html">Ochrana osobních údajů</a> · <a href="cookies.html">Cookies</a></span>
+    <div>
+      <h4>Web</h4>
+      <ul>
+        <li><a href="index.html">Domů</a></li>
+        <li><a href="jak-to-funguje.html">Jak to funguje</a></li>
+        <li><a href="sluzby.html">Služby</a></li>
+        <li><a href="cenik.html">Ceník</a></li>
+        <li><a href="caste-dotazy.html">Časté dotazy</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Dokumenty</h4>
+      <ul>
+        <li><a href="#">Obchodní podmínky</a></li>
+        <li><a href="storno.html">Storno podmínky</a></li>
+        <li><a href="#">Ochrana osobních údajů</a></li>
+        <li><a href="#">Přihlásit se</a></li>
+      </ul>
     </div>
   </div>
+  <div class="drobne">© 2026 AniPals</div>
 </footer>
 
-</div><!-- /.page -->
+<script>
+(function(){
+  // hamburger
+  var tlacitko = document.querySelector('.hamburger');
+  var menu = document.getElementById('menu');
+  if(tlacitko){
+    tlacitko.addEventListener('click', function(){
+      var otevrene = menu.classList.toggle('otevrene');
+      tlacitko.setAttribute('aria-expanded', otevrene ? 'true' : 'false');
+      tlacitko.setAttribute('aria-label', otevrene ? 'Zavřít menu' : 'Otevřít menu');
+    });
+  }
 
-<script src="script.js"></script>
+  // roletka v menu
+  var sipka = document.querySelector('.sipka');
+  var roletka = document.getElementById('roletka-sluzby');
+  if(sipka && roletka){
+    var prepni = function(otevrit){
+      roletka.classList.toggle('otevrena', otevrit);
+      sipka.setAttribute('aria-expanded', otevrit ? 'true' : 'false');
+    };
+    sipka.addEventListener('click', function(e){
+      e.stopPropagation();
+      prepni(!roletka.classList.contains('otevrena'));
+    });
+    document.addEventListener('click', function(e){
+      if(!roletka.contains(e.target) && e.target !== sipka) prepni(false);
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && roletka.classList.contains('otevrena')){
+        prepni(false);
+        sipka.focus();
+      }
+    });
+    roletka.addEventListener('click', function(e){
+      if(e.target.tagName === 'A'){
+        prepni(false);
+        if(menu) menu.classList.remove('otevrene');
+        if(tlacitko) tlacitko.setAttribute('aria-expanded','false');
+      }
+    });
+  }
+
+  // vodítko
+  var svg = document.getElementById('voditko');
+  var cara = document.getElementById('voditko-cara');
+  var karabinky = document.getElementById('voditko-karabinky');
+  var zastavky = Array.prototype.slice.call(document.querySelectorAll('[data-stop]'));
+  if(!svg || zastavky.length < 3) { if(svg) svg.style.display='none'; return; }
+
+  var klidnyRezim = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var delka = 0, prvni = 0, posledni = 0, body = [];
+
+  function postav(){
+    var vyskaDok = document.documentElement.scrollHeight;
+    svg.setAttribute('viewBox', '0 0 120 ' + vyskaDok);
+    svg.setAttribute('width', 120);
+    svg.setAttribute('height', vyskaDok);
+    svg.style.height = vyskaDok + 'px';
+
+    body = zastavky.map(function(sekce, i){
+      var r = sekce.getBoundingClientRect();
+      return { x: 60 + (i % 2 === 0 ? -15 : 15), y: r.top + window.scrollY + r.height / 2 };
+    });
+
+    var d = 'M ' + body[0].x + ' ' + (body[0].y - 90);
+    d += ' L ' + body[0].x + ' ' + body[0].y;
+    for(var i = 1; i < body.length; i++){
+      var a = body[i-1], b = body[i], stred = (a.y + b.y) / 2;
+      d += ' C ' + a.x + ' ' + stred + ', ' + b.x + ' ' + stred + ', ' + b.x + ' ' + b.y;
+    }
+    d += ' L ' + body[body.length-1].x + ' ' + (body[body.length-1].y + 90);
+    cara.setAttribute('d', d);
+
+    karabinky.innerHTML = body.map(function(p){
+      return '<circle class="karabinka" cx="' + p.x + '" cy="' + p.y + '" r="6"/>';
+    }).join('');
+
+    delka = cara.getTotalLength();
+    prvni = body[0].y;
+    posledni = body[body.length - 1].y;
+    cara.style.strokeDasharray = delka;
+    cara.style.strokeDashoffset = klidnyRezim ? 0 : delka;
+    kresli();
+  }
+
+  function kresli(){
+    if(klidnyRezim) return;
+    var pohled = window.scrollY + window.innerHeight * 0.62;
+    var postup = (pohled - prvni) / Math.max(1, (posledni - prvni));
+    postup = Math.max(0, Math.min(1, postup));
+    cara.style.strokeDashoffset = delka * (1 - postup);
+    var kruhy = karabinky.querySelectorAll('circle');
+    for(var i = 0; i < kruhy.length; i++){
+      kruhy[i].style.opacity = pohled >= body[i].y - 30 ? 1 : 0;
+    }
+  }
+
+  var ceka = false;
+  window.addEventListener('scroll', function(){
+    if(ceka) return;
+    ceka = true;
+    requestAnimationFrame(function(){ kresli(); ceka = false; });
+  }, { passive: true });
+
+  var casovac;
+  window.addEventListener('resize', function(){
+    clearTimeout(casovac);
+    casovac = setTimeout(postav, 150);
+  });
+
+  window.addEventListener('load', postav);
+  postav();
+})();
+</script>
+
 </body>
 </html>
